@@ -49,4 +49,15 @@ class PhotosController extends Controller
 	    // Redirect
 	    return redirect( url( "/albums/$album_id" ) )->with( 'success', 'Photo Stored Successfully in the Album' );
     }
+
+    function show( $id ) {
+    	$photo = Photo::find( $id );
+    	return view( 'photos.show', compact( 'photo' ) );
+    }
+
+    function destroy( $id ) {
+    	$photo = Photo::find( $id );
+    	$photo->delete();
+	    return redirect( url( '/' ) )->with( 'success', 'Your data has been deleted' );
+    }
 }

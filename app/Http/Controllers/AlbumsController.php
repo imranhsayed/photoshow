@@ -53,6 +53,9 @@ class AlbumsController extends Controller
 
     public function show( $id ) {
 //		$album = Album::find( $id );
+	    /**
+	     * $album will contain data for the current album and obj called photos containing data for all photos that belongs to this album id.
+	     */
 	    $album = Album::with( 'Photos' )->find( $id );
 	    return view( 'albums.show', compact( 'album' ) );
 
